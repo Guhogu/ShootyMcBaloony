@@ -152,8 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity_max: {x: 5, y: 5}
   velocity_increment: {x: 0.3, y: 0.3}
-  gravity: 1
-  grounded: 0
+  dive_gravity: 0.14
 --- !u!212 &212175394583049596
 SpriteRenderer:
   m_ObjectHideFlags: 1
