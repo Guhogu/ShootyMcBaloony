@@ -1122,6 +1122,20 @@ Prefab:
       propertyPath: bulletCollider
       value: 
       objectReference: {fileID: 1274303019}
+    - target: {fileID: 61578214515587092, guid: ac5764e04edd53b42ac998f30a8f23fc,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 61578214515587092, guid: ac5764e04edd53b42ac998f30a8f23fc,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549625975049008, guid: ac5764e04edd53b42ac998f30a8f23fc, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ac5764e04edd53b42ac998f30a8f23fc, type: 2}
   m_IsPrefabParent: 0

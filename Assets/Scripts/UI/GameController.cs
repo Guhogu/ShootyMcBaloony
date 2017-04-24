@@ -34,6 +34,8 @@ public class GameController : MonoBehaviour {
 
     public bool isEndless;
 
+    public static bool paused = false;
+
     void OnDisable()
     {
         SceneManager.sceneLoaded -= OnLevelFinishedLoading;

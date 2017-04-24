@@ -60,6 +60,7 @@ public class Player_Script : MonoBehaviour {
         {
             takingPortal = true;
             portalToWorld = toWorld;
+            GameController.hostileCanMove = false;
             anim.SetTrigger("TakingPortal");
         }
     }

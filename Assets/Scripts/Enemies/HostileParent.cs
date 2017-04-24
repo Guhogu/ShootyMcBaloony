@@ -16,6 +16,10 @@ public class HostileParent : MonoBehaviour {
 
     protected bool canMove()
     {
-        return GameController.hostileCanMove;
+        bool can = GameController.hostileCanMove && !GameController.paused ;
+        Animator anim = GetComponent<Animator>();
+        if (anim)
+            anim.speed = can ? 1 : 0;
+        return can;
     }
 }

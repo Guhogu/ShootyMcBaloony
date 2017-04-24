@@ -22,8 +22,8 @@ public class SkyScript : MonoBehaviour {
 
     private void Start()
     {
-
-        Camera.main.GetComponent<InfiniteCamera>().SetBounds(Mathf.Abs(sprite.bounds.min.y) + 32);
+        if(Camera.main.GetComponent<InfiniteCamera>())
+            Camera.main.GetComponent<InfiniteCamera>().SetBounds(Mathf.Abs(sprite.bounds.min.y) + 32);
     }
 
     // Update is called once per frame

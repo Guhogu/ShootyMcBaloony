@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretProjectileMain : MonoBehaviour
+public class TurretProjectileMain : HostileParent
 {
 
     [Header("References")]
@@ -43,6 +43,12 @@ public class TurretProjectileMain : MonoBehaviour
 
     void Update()
     {
+        if (!canMove())
+        {
+            ProjectileRenderer.GetComponent<Animator>().speed = 0;
+            return;
+
+        }
         MoveProjectile();
     }
 
