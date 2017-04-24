@@ -52,7 +52,7 @@ public class Player_Script : MonoBehaviour {
         default_ldrag = rb.drag;
         sprite = GetComponent<SpriteRenderer>();
 	}
-	
+
     public void TakePortal(int toWorld)
     {
 
@@ -117,8 +117,8 @@ public class Player_Script : MonoBehaviour {
         anim.SetFloat("velocity_x_abs", Mathf.Abs(rb.velocity.x));
         anim.SetBool("Diving", diving);
         anim.SetBool("Walking", walking);
-        
-        
+
+
     }
 
     bool isGrounded()
@@ -134,7 +134,7 @@ public class Player_Script : MonoBehaviour {
         dead = true;
         dying = true;
         getGameController().PlayerDie();
-        
+
 
         rb.velocity = new Vector2(40 * ((collision.transform.position.x > transform.position.x) ? -1 : 1), 50);
         rb.drag = 0;
