@@ -37,6 +37,12 @@ public class DroneMain : MonoBehaviour
         MoveAbovePlayer();
     }
 
+    public void KillDrone()
+    {
+        // TODO : Explosion
+        Destroy(gameObject);
+    }
+
     void MoveAbovePlayer()
     {
         if (!PlayerTransform)
