@@ -42,6 +42,8 @@ public class DroneMain : HostileParent
     public void KillDrone()
     {
         // TODO : Explosion
+        DroneProjectilesPool.SetParent(null);
+        Destroy(DroneProjectilesPool, 10.0f);
         Destroy(gameObject);
     }
 
