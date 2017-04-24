@@ -15,9 +15,8 @@ public class CameraScript : MonoBehaviour {
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cam = GetComponent<Camera>();
-        cam.aspect = Screen.width / 132;
     }
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
         Vector2 player_sp = cam.WorldToScreenPoint(player.position);
@@ -27,9 +26,9 @@ public class CameraScript : MonoBehaviour {
             move.x = (player_sp - cam_sp).x;
         if (Mathf.Abs(cam_sp.y - player_sp.y) > offset.y)
             move.y = (player_sp - cam_sp).y;
-       
 
-        
+
+
         transform.position = Vector3.SmoothDamp(transform.position, cam.ScreenToWorldPoint((Vector3)(move + cam_sp)), ref velocity, dampTime / (move.magnitude / 100 ));
 
     }
