@@ -21,6 +21,8 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         render = GetComponent<Image>();
+        if (FindObjectOfType<GameController>())
+            Destroy(FindObjectOfType<GameController>().gameObject);
     }
 
     // Update is called once per frame

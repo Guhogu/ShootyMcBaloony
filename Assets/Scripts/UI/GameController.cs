@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour {
     int currentLives;
 
     [SerializeField]
-    static string baseScene = "TestMap";
+    static string baseScene = "MainScene";
 
 
     [SerializeField]
@@ -48,6 +48,9 @@ public class GameController : MonoBehaviour {
             Destroy(this.gameObject);
             return;
         }
+        finishedScrollingLevel = new bool[scrollingLevels];
+        destroyedShield = new bool[scrollingLevels];
+        hostileCanMove = true;
         SceneManager.sceneLoaded += OnLevelFinishedLoading;
 
         DontDestroyOnLoad(this);
@@ -73,7 +76,10 @@ public class GameController : MonoBehaviour {
 
     public void Reload()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (currentLives >= 0)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        else
+            SceneManager.LoadScene("GameOver");
     }
 
     public void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
@@ -85,7 +91,6 @@ public class GameController : MonoBehaviour {
         foreach (EnergyCore core in FindObjectsOfType<EnergyCore>())
             if (finishedScrollingLevel[core.scrollingIndex])
                 core.broken = true;
-
     }
 
     public void Portal(int world)
@@ -109,9 +114,19 @@ public class GameController : MonoBehaviour {
     public static void FinishScrollingLevel()
     {
         finishedScrollingLevel[currentScrollingLevel] = true;
-        Debug.Log(finishedScrollingLevel);
+        foreach (bool b in finishedScrollingLevel)
+            if (!b)
+            {
+                SceneManager.LoadScene(baseScene);
+                return;
+            }
+        SceneManager.LoadScene("MainMenu");
+    }
 
-        SceneManager.LoadScene(baseScene);
+    private void FixedUpdate()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+            SceneManager.LoadScene("MainMenu");
     }
 
 }
