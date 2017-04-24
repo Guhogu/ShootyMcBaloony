@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretProjectileMain : MonoBehaviour {
+public class TurretProjectileMain : MonoBehaviour
+{
 
     [Header("References")]
     #region References
     [SerializeField]
     private Transform ProjectileTransfom;
+    #endregion
+
+    [Header("Prefabs")]
+    #region Prefabs
+    [SerializeField]
+    private GameObject BulletPrefab;
     #endregion
 
     [Header("Properties")]
@@ -23,7 +30,7 @@ public class TurretProjectileMain : MonoBehaviour {
 
     void Start()
     {
-        ExpireTime = Time.time + LifeSpan;
+        ExpireTime = Time.time + LifeSpan + Random.Range(-0.5f,0.5f);
         StartCoroutine(CheckForExpiry());
     }
 
@@ -32,14 +39,27 @@ public class TurretProjectileMain : MonoBehaviour {
         MoveProjectile();
     }
 
-    void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
-
     void MoveProjectile()
     {
-        ProjectileTransfom.position = ProjectileTransfom.position + Velocity * Time.deltaTime;
+        ProjectileTransfom.position = ProjectileTransfom.position + Velocity * Time.deltaTime * Speed;
+    }
+
+    void ExplodeProjectile()
+    {
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+                if (!(i == j && j == 0))
+                {
+                    GameObject Bullet = Instantiate(BulletPrefab, ProjectileTransfom.parent);
+                    Bullet.transform.position = ProjectileTransfom.position;
+                    Bullet.GetComponent<BulletMain>().Velocity = new Vector3(i, j).normalized;
+                    Bullet.SetActive(true);
+                }
+            }
+        }
+        Destroy(gameObject);
     }
 
     IEnumerator CheckForExpiry()
@@ -48,7 +68,7 @@ public class TurretProjectileMain : MonoBehaviour {
         {
             if (Time.time > ExpireTime)
             {
-                Destroy(gameObject);
+                ExplodeProjectile();
             }
             yield return new WaitForSeconds(1.0f);
         }
