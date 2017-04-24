@@ -29,7 +29,32 @@ public class TurretRotate : MonoBehaviour {
         }
         Vector3 pointing = (PlayerTransform.position - TurretRotationCenterTransform.position).normalized;
         float angle = Vector3.Angle(Vector3.left, pointing);
-        TurretAnimator.SetFloat("Angle", ((int)(angle / 45)) * 45);
+        TurretAnimator.SetFloat("Angle", GetAnimationAngle(angle));
+    }
+
+    int GetAnimationAngle(float angle)
+    {
+        if(angle < 22.5)
+        {
+            return 0;
+        }
+        if(angle < 67.5)
+        {
+            return 45;
+        }
+        if (angle < 90)
+        {
+            return 85;
+        }
+        if(angle < 112.5)
+        {
+            return 95;
+        }
+        if(angle < 157.5)
+        {
+            return 135;
+        }
+        return 180;
     }
 
     void GetPlayerReference()

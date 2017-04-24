@@ -14,6 +14,8 @@ public class TurretFire : MonoBehaviour
     private Transform TurretGunOutputTransform;
     [SerializeField]
     private Transform TurretProjectilesPoolTransform;
+    [SerializeField]
+    private Animator TurretAnimator;
     #endregion
 
     [Header("Prefabs")]
@@ -53,7 +55,8 @@ public class TurretFire : MonoBehaviour
         }
         GameObject Projectile = Instantiate(TurretProjectilePrefab, TurretProjectilesPoolTransform);
         Projectile.transform.position = TurretGunOutputTransform.position;
-        Projectile.GetComponent<TurretProjectileMain>().Velocity = (PlayerTransform.position - TurretGunOutputTransform.position).normalized;
+        float angle = TurretAnimator.GetFloat("Angle") * Mathf.PI / 180;
+        Projectile.GetComponent<TurretProjectileMain>().Velocity = new Vector2(-Mathf.Cos(angle), Mathf.Sin(angle));
         Projectile.SetActive(true);
     }
 

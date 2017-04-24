@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretGunOutputTransform: {fileID: 4284079041530036}
   TurretProjectilesPoolTransform: {fileID: 4694070301059666}
+  TurretAnimator: {fileID: 95701624412396042}
   TurretProjectilePrefab: {fileID: 1376719312394048, guid: f50ca914f817d554ba77c7dd457ddd2e,
     type: 2}
   FireRate: 3
