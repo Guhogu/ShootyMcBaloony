@@ -26,7 +26,7 @@ public class Player_Script : MonoBehaviour {
 
 
     Animator anim;
-    Rigidbody2D rb;
+    public Rigidbody2D rb;
     SpriteRenderer sprite;
 
     bool facingLeft;

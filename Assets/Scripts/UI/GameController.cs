@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
     static int scrollingLevels = 2;
 
     static bool[] finishedScrollingLevel = new bool[scrollingLevels];
+    public static bool[] destroyedShield = new bool[scrollingLevels];
 
     [SerializeField]
     static string[] scrollingScenes = new string[] { "Scrolling1", "Scrolling2" };
@@ -81,7 +82,7 @@ public class GameController : MonoBehaviour {
         healthScript = null;
         getHealthScript().UpdateLives(currentLives);
 
-        foreach (EnergyCore core in GameObject.FindObjectsOfType<EnergyCore>())
+        foreach (EnergyCore core in FindObjectsOfType<EnergyCore>())
             if (finishedScrollingLevel[core.scrollingIndex])
                 core.broken = true;
 
@@ -107,8 +108,10 @@ public class GameController : MonoBehaviour {
 
     public static void FinishScrollingLevel()
     {
-        SceneManager.LoadScene(baseScene);
         finishedScrollingLevel[currentScrollingLevel] = true;
+        Debug.Log(finishedScrollingLevel);
+
+        SceneManager.LoadScene(baseScene);
     }
 
 }

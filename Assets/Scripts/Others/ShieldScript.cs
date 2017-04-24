@@ -30,6 +30,7 @@ public class ShieldScript : MonoBehaviour {
             {
                 energyCore.EnablePortal();
                 anim.SetTrigger("Destroyed");
+                GameController.destroyedShield[energyCore.scrollingIndex] = true;
             }
             else
                 anim.SetTrigger("Hit");

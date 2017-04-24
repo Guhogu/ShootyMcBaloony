@@ -15,9 +15,11 @@ public class InfiniteCamera : MonoBehaviour {
 
     Transform player;
 
+    Rigidbody2D player_rb;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         
 	}
 	
@@ -28,9 +30,21 @@ public class InfiniteCamera : MonoBehaviour {
             return;
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player").transform;
-
+        if (!player_rb)
+            player_rb = player.GetComponent<Player_Script>().rb;
         transform.position += (Vector3)velocity * Time.deltaTime;
         Vector2 player_position = cam.WorldToScreenPoint(player.position);
+
+
+        //if (player_position.x <= offset.x || player_position.x >= cam.pixelWidth - offset.x)
+        //{
+        //    player_rb.velocity = new Vector2(0, player_rb.velocity.y);
+        //}
+        //if (player_position.y <= offset.y || player_position.y >= cam.pixelWidth - offset.y)
+        //{
+        //    player_rb.velocity = new Vector2(player_rb.velocity.x , 0);
+        //}
+
 
         Vector3 new_player_positon = cam.ScreenToWorldPoint(
                                                   new Vector3(

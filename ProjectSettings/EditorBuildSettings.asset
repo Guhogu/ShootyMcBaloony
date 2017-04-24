@@ -6,8 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Maps/TestMap.unity
+    path: Assets/Maps/MainScene.unity
   - enabled: 1
     path: Assets/Maps/Scrolling1.unity
   - enabled: 1
     path: Assets/Maps/Scrolling2.unity
+  - enabled: 1
+    path: Assets/Maps/ScrollingEndless.unity

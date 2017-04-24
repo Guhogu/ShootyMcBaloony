@@ -50,8 +50,6 @@ public class EnergyCore : MonoBehaviour {
     {
         portal.SetActive(true);
         portal.GetComponent<PortalScript>().toWorld = scrollingIndex;
-        //portal.GetComponent<SpriteRenderer>().enabled = true;
-        //portal.GetComponent<BoxCollider2D>().enabled = true;
     }
 
     // Update is called once per frame
