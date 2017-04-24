@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4284079041530036}
   - component: {fileID: 212570771623021004}
   m_Layer: 0
-  m_Name: TurretGunOutput
+  m_Name: TurretGunOutputPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurretGunOutputTransform: {fileID: 4284079041530036}
   TurretProjectilesPoolTransform: {fileID: 4694070301059666}
-  BulletMain: {fileID: 0}
   TurretProjectilePrefab: {fileID: 1376719312394048, guid: f50ca914f817d554ba77c7dd457ddd2e,
     type: 2}
   FireRate: 3
