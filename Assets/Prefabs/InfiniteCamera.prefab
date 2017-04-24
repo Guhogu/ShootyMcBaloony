@@ -53,6 +53,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4588099615233006}
   - component: {fileID: 212222004775659220}
+  - component: {fileID: 61199182396235042}
   m_Layer: 0
   m_Name: Mask2
   m_TagString: Untagged
@@ -89,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4290340082280958}
   - component: {fileID: 212979133655141884}
+  - component: {fileID: 61113574745139506}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Untagged
@@ -199,6 +201,34 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!61 &61113574745139506
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1786693631305930}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+--- !u!61 &61199182396235042
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467558673569530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!81 &81755476174626844
 AudioListener:
   m_ObjectHideFlags: 1
@@ -227,7 +257,7 @@ MonoBehaviour:
   multiplier: 0.3
   cam: {fileID: 20769921828907770}
   sprite: {fileID: 212937940982294314}
-  sky: {fileID: 1412578403427384, guid: c95f6edb9e713284885103c33a9b0462, type: 2}
+  sky: {fileID: 1547322929925700, guid: 70085711b4c09ec4b9b6298ff88e7e4f, type: 2}
   origin: {x: 0, y: 0}
 --- !u!114 &114186214258194592
 MonoBehaviour:
@@ -263,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 20, y: 0}
   cam: {fileID: 20769921828907770}
-  offset: {x: 20, y: 100}
+  offset: {x: 20, y: 0}
 --- !u!124 &124821603012525370
 Behaviour:
   m_ObjectHideFlags: 1

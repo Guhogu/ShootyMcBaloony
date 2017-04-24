@@ -61,6 +61,6 @@ public class InfiniteCamera : MonoBehaviour {
 
     public void SetBounds(float y)
     {
-        offset = new Vector2(offset.x, y);
+        //offset = new Vector2(offset.x, y);
     }
 }
