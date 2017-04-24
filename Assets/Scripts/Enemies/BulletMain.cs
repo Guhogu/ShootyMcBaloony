@@ -18,7 +18,14 @@ public class BulletMain : MonoBehaviour {
     private float LifeSpan = 5.0f;
     #endregion
 
+    private float ExpireTime;
     public Vector3 Velocity;
+
+    void Start()
+    {
+        ExpireTime = Time.time + LifeSpan + Random.Range(-0.5f, 0.5f);
+        StartCoroutine(CheckForExpiry());
+    }
 
     void Update()
     {
@@ -28,5 +35,17 @@ public class BulletMain : MonoBehaviour {
     void MoveBullet()
     {
         BulletTransfom.position = BulletTransfom.position + Velocity * Time.deltaTime * Speed;
+    }
+
+    IEnumerator CheckForExpiry()
+    {
+        while (true)
+        {
+            if (Time.time > ExpireTime)
+            {
+                Destroy(gameObject);
+            }
+            yield return new WaitForSeconds(1.0f);
+        }
     }
 }

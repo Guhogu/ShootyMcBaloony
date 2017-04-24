@@ -40,8 +40,8 @@ public class TurretFire : MonoBehaviour
     {
         while (true)
         {
-            ShootAtPlayer();
             yield return new WaitForSeconds(FireRate);
+            ShootAtPlayer();
         }
     }
 

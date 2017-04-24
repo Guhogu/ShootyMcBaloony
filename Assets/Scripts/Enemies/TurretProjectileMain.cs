@@ -9,6 +9,8 @@ public class TurretProjectileMain : MonoBehaviour
     #region References
     [SerializeField]
     private Transform ProjectileTransfom;
+    [SerializeField]
+    private SpriteRenderer ProjectileRenderer;
     #endregion
 
     [Header("Prefabs")]
@@ -32,6 +34,7 @@ public class TurretProjectileMain : MonoBehaviour
     {
         ExpireTime = Time.time + LifeSpan + Random.Range(-0.5f,0.5f);
         StartCoroutine(CheckForExpiry());
+        StartCoroutine(SetHigherLayerAfterSeconds());
     }
 
     void Update()
@@ -70,8 +73,14 @@ public class TurretProjectileMain : MonoBehaviour
             {
                 ExplodeProjectile();
             }
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    IEnumerator SetHigherLayerAfterSeconds()
+    {
+        yield return new WaitForSeconds(1.0f);
+        ProjectileRenderer.sortingOrder = 140;
     }
 
 }
