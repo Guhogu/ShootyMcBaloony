@@ -32,8 +32,10 @@ public class EndlessGeneration : MonoBehaviour {
 
             float size = 0;
 
-            foreach (Transform t in newPart.GetComponentsInChildren<Transform>())
-                size = Mathf.Max(size, t.localPosition.x);
+            for(int j = 0;  j < newPart.transform.childCount; ++j)
+                size = Mathf.Max(size, newPart.transform.GetChild(j).localPosition.x);
+
+            Debug.Log(size);
 
             nextGenerationPosition += size + 30;
         }
@@ -41,7 +43,7 @@ public class EndlessGeneration : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(transform.position.x > nextGenerationPosition + 1080)
+		if(transform.position.x > nextGenerationPosition - 1080)
         {
             GenerateSegment();
         }

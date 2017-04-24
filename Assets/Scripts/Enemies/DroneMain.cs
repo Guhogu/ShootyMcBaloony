@@ -43,7 +43,7 @@ public class DroneMain : HostileParent
     {
         // TODO : Explosion
         DroneProjectilesPool.SetParent(null);
-        Destroy(DroneProjectilesPool, 10.0f);
+        Destroy(DroneProjectilesPool.gameObject, 10.0f);
         Destroy(gameObject);
     }
 
@@ -74,6 +74,11 @@ public class DroneMain : HostileParent
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.CompareTag("Player") && PlayerTransform.GetComponent<Player_Script>().diving)
+            KillDrone();
+    }
 
 }

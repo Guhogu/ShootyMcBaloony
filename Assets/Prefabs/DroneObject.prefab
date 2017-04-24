@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1082208425970060
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 4173753506577522}
   - component: {fileID: 114793291870160102}
   - component: {fileID: 114599394742398040}
+  - component: {fileID: 58504002700792400}
   m_Layer: 0
   m_Name: DroneObject
   m_TagString: Untagged
@@ -185,8 +186,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566086925960006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.16062, y: 295, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -107, y: 223, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4368914030422744}
@@ -319,6 +320,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 13
+--- !u!58 &58504002700792400
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566086925960006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 28}
+  serializedVersion: 2
+  m_Radius: 13
 --- !u!95 &95303674086708776
 Animator:
   serializedVersion: 3
@@ -373,7 +388,7 @@ MonoBehaviour:
   DroneProjectilesPool: {fileID: 4368914030422744}
   Speed: 20
   XOffset: 0
-  YOffset: 50
+  YOffset: 80
 --- !u!212 &212540287675671560
 SpriteRenderer:
   m_ObjectHideFlags: 1
