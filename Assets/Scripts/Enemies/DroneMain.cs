@@ -51,6 +51,7 @@ public class DroneMain : MonoBehaviour
         }
         Vector3 TargetPosition = PlayerTransform.position + Vector3.up * YOffset + Vector3.right * XOffset;
         Vector3 Direction = (TargetPosition - DroneTransform.position);
+        // Do not move if close enough to the player
         if(Direction.magnitude < 5.0f)
         {
             return;
