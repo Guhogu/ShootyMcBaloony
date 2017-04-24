@@ -11,6 +11,8 @@ public class TurretProjectileMain : HostileParent
     private Transform ProjectileTransfom;
     [SerializeField]
     private SpriteRenderer ProjectileRenderer;
+    [SerializeField]
+    private SpriteRenderer ProjectileSpriteRenderer;
     #endregion
 
     [Header("Prefabs")]
@@ -39,6 +41,7 @@ public class TurretProjectileMain : HostileParent
         SpeedOffset = Random.Range(0.0f, 30.0f);
         StartCoroutine(CheckForExpiry());
         StartCoroutine(SetHigherLayerAfterSeconds());
+        StartCoroutine(FlashBeforeExpiry());
     }
 
     void Update()
@@ -84,6 +87,28 @@ public class TurretProjectileMain : HostileParent
                 ExplodeProjectile();
             }
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    IEnumerator FlashBeforeExpiry()
+    {
+        bool latch = false;
+        while (true)
+        {
+            if (Time.time > ExpireTime - 0.5f)
+            {
+                if (latch)
+                {
+                    ProjectileSpriteRenderer.color = Color.white;
+                    latch = false;
+                }
+                else
+                {
+                    ProjectileSpriteRenderer.color = Color.gray;
+                    latch = true;
+                }
+            }
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
