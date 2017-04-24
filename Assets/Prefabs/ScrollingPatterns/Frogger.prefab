@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212038503886519532}
   - component: {fileID: 114933171685742652}
   - component: {fileID: 95159157423941078}
+  - component: {fileID: 58024304797370824}
   m_Layer: 0
   m_Name: LIGHTNING (7)
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 212538076996808208}
   - component: {fileID: 114132315616481100}
   - component: {fileID: 95376423793221810}
+  - component: {fileID: 58780251284987632}
   m_Layer: 0
   m_Name: LIGHTNING (19)
   m_TagString: Untagged
@@ -58,6 +60,7 @@ GameObject:
   - component: {fileID: 212798722997198522}
   - component: {fileID: 114085662319343274}
   - component: {fileID: 95615017982521990}
+  - component: {fileID: 58513810428307630}
   m_Layer: 0
   m_Name: LIGHTNING (16)
   m_TagString: Untagged
@@ -76,6 +79,7 @@ GameObject:
   - component: {fileID: 212624275749983624}
   - component: {fileID: 114677484560193806}
   - component: {fileID: 95575821497694774}
+  - component: {fileID: 58460958048093184}
   m_Layer: 0
   m_Name: LIGHTNING (18)
   m_TagString: Untagged
@@ -94,6 +98,7 @@ GameObject:
   - component: {fileID: 212204525003138520}
   - component: {fileID: 114023433184992606}
   - component: {fileID: 95997882289914704}
+  - component: {fileID: 58856345148634630}
   m_Layer: 0
   m_Name: LIGHTNING (14)
   m_TagString: Untagged
@@ -112,6 +117,7 @@ GameObject:
   - component: {fileID: 212961473176354692}
   - component: {fileID: 114439709571113464}
   - component: {fileID: 95083222811466932}
+  - component: {fileID: 58055997015092014}
   m_Layer: 0
   m_Name: LIGHTNING (6)
   m_TagString: Untagged
@@ -145,6 +151,7 @@ GameObject:
   - component: {fileID: 212771646572914662}
   - component: {fileID: 114926904339942344}
   - component: {fileID: 95286350664962792}
+  - component: {fileID: 58302695622044964}
   m_Layer: 0
   m_Name: LIGHTNING (9)
   m_TagString: Untagged
@@ -163,6 +170,7 @@ GameObject:
   - component: {fileID: 212422291826696636}
   - component: {fileID: 114317556246784080}
   - component: {fileID: 95019271078440068}
+  - component: {fileID: 58315652569057548}
   m_Layer: 0
   m_Name: LIGHTNING (17)
   m_TagString: Untagged
@@ -181,6 +189,7 @@ GameObject:
   - component: {fileID: 212931553236762574}
   - component: {fileID: 114283074403960888}
   - component: {fileID: 95523125478666924}
+  - component: {fileID: 58033295470282662}
   m_Layer: 0
   m_Name: LIGHTNING (8)
   m_TagString: Untagged
@@ -327,6 +336,132 @@ Transform:
   m_Father: {fileID: 4654344375479266}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58024304797370824
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062841103190318}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58033295470282662
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852815656717052}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58055997015092014
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486880402428904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58302695622044964
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583755608201026}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58315652569057548
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698094851234028}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58460958048093184
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212365425441972}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58513810428307630
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1187567945924050}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58780251284987632
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107272048574824}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
+--- !u!58 &58856345148634630
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1342056957955904}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 3
 --- !u!95 &95019271078440068
 Animator:
   serializedVersion: 3

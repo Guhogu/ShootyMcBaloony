@@ -202,8 +202,9 @@ MonoBehaviour:
   walking_ldrag: 10
   feetCollider: {fileID: 61449325213491608}
   bulletCollider: {fileID: 61432332235958556}
+  rb: {fileID: 0}
   diving: 0
-  portalToWorld: 
+  portalToWorld: 0
   dying: 0
 --- !u!114 &114472452481587386
 MonoBehaviour:

@@ -18,7 +18,8 @@ public class TurretRotate : MonoBehaviour
 
     void Update()
     {
-        PointAtPlayer();
+        if(GameController.hostileCanMove)
+            PointAtPlayer();
     }
 
     void PointAtPlayer()

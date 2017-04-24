@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212517954305538094}
   - component: {fileID: 114648477238834402}
   - component: {fileID: 58260990587939812}
-  - component: {fileID: 58831671623086992}
   - component: {fileID: 95130467479917798}
   m_Layer: 0
   m_Name: LIGHTNING (23)
@@ -42,7 +41,6 @@ GameObject:
   - component: {fileID: 212238067763374582}
   - component: {fileID: 114337859707276892}
   - component: {fileID: 58383763210526484}
-  - component: {fileID: 58401082884155838}
   - component: {fileID: 95671053469918292}
   m_Layer: 0
   m_Name: LIGHTNING (25)
@@ -62,7 +60,6 @@ GameObject:
   - component: {fileID: 212448909804787616}
   - component: {fileID: 114071656219027626}
   - component: {fileID: 58566269554597310}
-  - component: {fileID: 58054621222443556}
   - component: {fileID: 95631593558374478}
   m_Layer: 0
   m_Name: LIGHTNING (20)
@@ -82,7 +79,6 @@ GameObject:
   - component: {fileID: 212482037639872092}
   - component: {fileID: 114694436795094480}
   - component: {fileID: 58894677317953688}
-  - component: {fileID: 58302486494015370}
   - component: {fileID: 95307554573142496}
   m_Layer: 0
   m_Name: LIGHTNING (22)
@@ -102,7 +98,6 @@ GameObject:
   - component: {fileID: 212013242350093458}
   - component: {fileID: 114164236403214806}
   - component: {fileID: 58147153781751354}
-  - component: {fileID: 58720277518297750}
   - component: {fileID: 95872048975071276}
   m_Layer: 0
   m_Name: LIGHTNING (24)
@@ -137,7 +132,6 @@ GameObject:
   - component: {fileID: 212985648814267520}
   - component: {fileID: 114288595868414422}
   - component: {fileID: 58477908401003758}
-  - component: {fileID: 58208038668105946}
   - component: {fileID: 95320091534030968}
   m_Layer: 0
   m_Name: LIGHTNING (21)
@@ -243,40 +237,12 @@ Transform:
   m_Father: {fileID: 4213557939157748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58054621222443556
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1173614150609588}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
 --- !u!58 &58147153781751354
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1732679644071216}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
---- !u!58 &58208038668105946
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1886468301403766}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -299,35 +265,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
---- !u!58 &58302486494015370
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1381561656702142}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
 --- !u!58 &58383763210526484
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1146294644325964}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
---- !u!58 &58401082884155838
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -361,34 +299,6 @@ CircleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1173614150609588}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
---- !u!58 &58720277518297750
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1732679644071216}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 3
---- !u!58 &58831671623086992
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1009707936452768}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
