@@ -28,7 +28,7 @@ public class SkyScript : MonoBehaviour {
         if(!createdNext)
         { 
             float screen_pos = cam.WorldToScreenPoint(transform.position).x;
-            if(screen_pos < 100)
+            if(screen_pos < 1000)
             {
                 Transform newSky = Instantiate(sky, transform.parent).transform;
                 newSky.localPosition = (Vector3)origin + sprite.sprite.rect.width * Vector3.right;

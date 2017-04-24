@@ -15,6 +15,7 @@ public class CameraScript : MonoBehaviour {
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cam = GetComponent<Camera>();
+        cam.aspect = Screen.width / 132;
     }
 	
 	// Update is called once per frame
