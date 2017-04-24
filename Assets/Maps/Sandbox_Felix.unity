@@ -193,16 +193,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114427485849238594, guid: 1c74477c48d83074e823846854529844,
-        type: 2}
-      propertyPath: TurretGunOutputTransform
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212377731033514356, guid: 1c74477c48d83074e823846854529844,
-        type: 2}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c74477c48d83074e823846854529844, type: 2}
   m_IsPrefabParent: 0
