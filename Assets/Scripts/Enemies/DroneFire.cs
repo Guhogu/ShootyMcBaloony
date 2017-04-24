@@ -8,11 +8,11 @@ public class DroneFire : MonoBehaviour
     [Header("References")]
     #region References
     [SerializeField]
-    private Transform DroneGunOutputTransform;
-    [SerializeField]
     private Transform[] DroneGunOutputTransforms;
     [SerializeField]
     private Transform DroneProjectilesPoolTransform;
+    [SerializeField]
+    private Animator DroneAnimator;
     #endregion
 
     [Header("Prefabs")]
@@ -38,6 +38,7 @@ public class DroneFire : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(FireRate);
+            DroneAnimator.SetTrigger("Reload");
             Shoot();
         }
     }
@@ -48,8 +49,7 @@ public class DroneFire : MonoBehaviour
         {
             GameObject Projectile = Instantiate(BulletPrefab, DroneProjectilesPoolTransform);
             Projectile.transform.position = DroneGunOutputTransforms[i].position;
-            Vector3 direction = (DroneGunOutputTransforms[i].position - DroneGunOutputTransform.position).normalized;
-            Projectile.GetComponent<BulletMain>().Velocity = direction;
+            Projectile.GetComponent<BulletMain>().Velocity = DroneGunOutputTransforms[i].right;
             Projectile.SetActive(true);
         }
     }
