@@ -13,7 +13,7 @@ public class BulletMain : MonoBehaviour {
     [Header("Properties")]
     #region Properties
     [SerializeField]
-    private float Speed = 20f;
+    public float Speed = 20.0f;
     [SerializeField]
     private float LifeSpan = 5.0f;
     #endregion
@@ -23,7 +23,7 @@ public class BulletMain : MonoBehaviour {
 
     void Start()
     {
-        ExpireTime = Time.time + LifeSpan + Random.Range(-0.5f, 0.5f);
+        ExpireTime = Time.time + LifeSpan;
         StartCoroutine(CheckForExpiry());
     }
 

@@ -22,9 +22,12 @@ public class TurretProjectileMain : MonoBehaviour
     [Header("Properties")]
     #region Properties
     [SerializeField]
-    private float Speed = 0.1f;
+    private float Speed = 20.0f;
     [SerializeField]
-    private float LifeSpan = 5.0f;
+    [Range(0.0f, 30.0f)]
+    private float SpeedOffset = 0.0f;
+    [SerializeField]
+    private float LifeSpan = 2.0f;
     #endregion
 
     private float ExpireTime;
@@ -32,7 +35,8 @@ public class TurretProjectileMain : MonoBehaviour
 
     void Start()
     {
-        ExpireTime = Time.time + LifeSpan + Random.Range(-1.0f,1.0f);
+        ExpireTime = Time.time + LifeSpan;
+        SpeedOffset = Random.Range(0.0f, 30.0f);
         StartCoroutine(CheckForExpiry());
         StartCoroutine(SetHigherLayerAfterSeconds());
     }
@@ -44,7 +48,7 @@ public class TurretProjectileMain : MonoBehaviour
 
     void MoveProjectile()
     {
-        ProjectileTransfom.position = ProjectileTransfom.position + Velocity * Time.deltaTime * Speed;
+        ProjectileTransfom.position = ProjectileTransfom.position + Velocity * Time.deltaTime * (Speed + SpeedOffset);
     }
 
     void ExplodeProjectile()

@@ -149,7 +149,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 1866382689972808, guid: 6133c5b9f964de545b3df4444b6b6001,
     type: 2}
   Speed: 20
-  LifeSpan: 5
+  SpeedOffset: 0
+  LifeSpan: 2
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!212 &212602888830859930
 SpriteRenderer:

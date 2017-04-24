@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletTransfom: {fileID: 4920210844488978}
-  Speed: 20
+  Speed: 30
   LifeSpan: 10
   Velocity: {x: 0, y: 0, z: 0}
 --- !u!212 &212981413305821228
