@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DroneTransform: {fileID: 4173753506577522}
   DroneProjectilesPool: {fileID: 4368914030422744}
-  Speed: 10
+  Speed: 20
   XOffset: 0
   YOffset: 50
 --- !u!212 &212540287675671560

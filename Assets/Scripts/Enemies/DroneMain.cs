@@ -39,6 +39,12 @@ public class DroneMain : HostileParent
         MoveAbovePlayer();
     }
 
+    public void KillDrone()
+    {
+        // TODO : Explosion
+        Destroy(gameObject);
+    }
+
     void MoveAbovePlayer()
     {
         if (!PlayerTransform)
@@ -47,7 +53,12 @@ public class DroneMain : HostileParent
         }
         Vector3 TargetPosition = PlayerTransform.position + Vector3.up * YOffset + Vector3.right * XOffset;
         Vector3 Direction = (TargetPosition - DroneTransform.position);
+        // Do not move if close enough to the player
         if(Direction.magnitude < 5.0f)
+        {
+            return;
+        }
+        if (Direction.magnitude > 200.0f)
         {
             return;
         }
