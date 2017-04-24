@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeslaScript : MonoBehaviour {
+public class TeslaScript : HostileParent {
 
     [SerializeField]
     float firingTime;
@@ -36,6 +36,8 @@ public class TeslaScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!canMove())
+            return;
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player").transform;
 

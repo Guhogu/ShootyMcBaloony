@@ -18,11 +18,14 @@ public class InfiniteCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
+
+        if (!GameController.hostileCanMove)
+            return;
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -37,7 +40,13 @@ public class InfiniteCamera : MonoBehaviour {
 
         new_player_positon.Set(new_player_positon.x, new_player_positon.y, player.position.z);
 
+
         player.position = new_player_positon;
 
+    }
+
+    public void SetBounds(float y)
+    {
+        offset = new Vector2(offset.x, y);
     }
 }

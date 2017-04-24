@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletMain : MonoBehaviour {
+public class BulletMain : HostileParent {
 
     [Header("References")]
     #region References
@@ -29,6 +29,8 @@ public class BulletMain : MonoBehaviour {
 
     void Update()
     {
+        if (!canMove())
+            return;
         MoveBullet();
     }
 

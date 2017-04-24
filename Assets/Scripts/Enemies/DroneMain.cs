@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneMain : MonoBehaviour
+public class DroneMain : HostileParent
 {
 
     [Header("References")]
@@ -34,6 +34,8 @@ public class DroneMain : MonoBehaviour
 
     void Update()
     {
+        if (!canMove())
+            return;
         MoveAbovePlayer();
     }
 

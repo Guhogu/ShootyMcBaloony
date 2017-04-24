@@ -135,6 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 0.05
+  cam: {fileID: 20791354578525282}
+  sprite: {fileID: 212221136758923672}
+  sky: {fileID: 1412578403427384, guid: c95f6edb9e713284885103c33a9b0462, type: 2}
+  origin: {x: 0, y: 0}
 --- !u!114 &114713687065188866
 MonoBehaviour:
   m_ObjectHideFlags: 1
