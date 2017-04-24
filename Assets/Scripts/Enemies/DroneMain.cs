@@ -56,6 +56,10 @@ public class DroneMain : MonoBehaviour
         {
             return;
         }
+        if (Direction.magnitude > 200.0f)
+        {
+            return;
+        }
         Vector3 Velocity = Direction.normalized;
         DroneTransform.position += Velocity * Time.deltaTime * Speed;
         DroneProjectilesPool.position -= Velocity * Time.deltaTime * Speed;
