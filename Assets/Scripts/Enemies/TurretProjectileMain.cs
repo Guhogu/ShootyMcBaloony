@@ -12,7 +12,7 @@ public class TurretProjectileMain : HostileParent
     [SerializeField]
     private SpriteRenderer ProjectileRenderer;
     [SerializeField]
-    private SpriteRenderer ProjectileSpriteRenderer;
+    private GameObject FlashSpriteObject;
     #endregion
 
     [Header("Prefabs")]
@@ -92,21 +92,11 @@ public class TurretProjectileMain : HostileParent
 
     IEnumerator FlashBeforeExpiry()
     {
-        bool latch = false;
         while (true)
         {
             if (Time.time > ExpireTime - 0.5f)
             {
-                if (latch)
-                {
-                    ProjectileSpriteRenderer.color = Color.white;
-                    latch = false;
-                }
-                else
-                {
-                    ProjectileSpriteRenderer.color = Color.gray;
-                    latch = true;
-                }
+                FlashSpriteObject.SetActive(!FlashSpriteObject.activeInHierarchy);
             }
             yield return new WaitForSeconds(0.05f);
         }
