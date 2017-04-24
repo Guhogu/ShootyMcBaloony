@@ -14,6 +14,7 @@ public class TurretFire : MonoBehaviour
     private Transform TurretGunOutputTransform;
     [SerializeField]
     private Transform TurretProjectilesPoolTransform;
+    private Transform PlayerTransform;
     #endregion
 
     [Header("Prefabs")]
@@ -28,8 +29,6 @@ public class TurretFire : MonoBehaviour
     [Tooltip("Idle time between shots")]
     private float FireRate;
     #endregion
-
-    private Transform PlayerTransform;
 
     void Start()
     {

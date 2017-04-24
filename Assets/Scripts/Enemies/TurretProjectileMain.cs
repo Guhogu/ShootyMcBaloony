@@ -32,7 +32,7 @@ public class TurretProjectileMain : MonoBehaviour
 
     void Start()
     {
-        ExpireTime = Time.time + LifeSpan + Random.Range(-0.5f,0.5f);
+        ExpireTime = Time.time + LifeSpan + Random.Range(-1.0f,1.0f);
         StartCoroutine(CheckForExpiry());
         StartCoroutine(SetHigherLayerAfterSeconds());
     }

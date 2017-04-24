@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4284079041530036}
   - component: {fileID: 212570771623021004}
   m_Layer: 0
-  m_Name: TurretGunOutputPosition
+  m_Name: TurretGunOutput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1942976683096634
 GameObject:
   m_ObjectHideFlags: 0

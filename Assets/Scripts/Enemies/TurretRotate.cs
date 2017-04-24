@@ -13,9 +13,8 @@ public class TurretRotate : MonoBehaviour
     private Transform TurretRotationCenterTransform;
     [SerializeField]
     private Animator TurretAnimator;
-    #endregion
-
     private Transform PlayerTransform;
+    #endregion
 
     void Update()
     {
