@@ -19,17 +19,17 @@ public class DroneMain : MonoBehaviour
     [SerializeField]
     private float Speed;
     [SerializeField]
-    [Range(-30, 30)]
+    [Range(-20, 20)]
     private int XOffset;
     [SerializeField]
-    [Range(30, 80)]
+    [Range(40, 80)]
     private int YOffset;
     #endregion
 
     void Start()
     {
-        YOffset = Random.Range(30, 81);
-        XOffset = Random.Range(-30, 31);
+        YOffset = Random.Range(40, 81);
+        XOffset = Random.Range(-20, 21);
     }
 
     void Update()
@@ -44,7 +44,12 @@ public class DroneMain : MonoBehaviour
             GetPlayerReference();
         }
         Vector3 TargetPosition = PlayerTransform.position + Vector3.up * YOffset + Vector3.right * XOffset;
-        Vector3 Velocity = (TargetPosition - DroneTransform.position).normalized;
+        Vector3 Direction = (TargetPosition - DroneTransform.position);
+        if(Direction.magnitude < 5.0f)
+        {
+            return;
+        }
+        Vector3 Velocity = Direction.normalized;
         DroneTransform.position += Velocity * Time.deltaTime * Speed;
         DroneProjectilesPool.position -= Velocity * Time.deltaTime * Speed;
     }

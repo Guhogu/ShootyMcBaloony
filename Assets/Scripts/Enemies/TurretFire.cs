@@ -14,6 +14,8 @@ public class TurretFire : MonoBehaviour
     private Transform TurretGunOutputTransform;
     [SerializeField]
     private Transform TurretProjectilesPoolTransform;
+    [SerializeField]
+    private BulletMain BulletMain;
     private Transform PlayerTransform;
     #endregion
 
