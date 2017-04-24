@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4499819864720550}
   - component: {fileID: 114491370235912904}
   m_Layer: 0
-  m_Name: TurretProjectile
-  m_TagString: Bullet
+  m_Name: TurretProjectileObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4934707174217244}
   - component: {fileID: 212602888830859930}
+  - component: {fileID: 95854269306493646}
   m_Layer: 0
   m_Name: TurretProjectileModel
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Transform:
   m_GameObject: {fileID: 1728868492173182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 4499819864720550}
   m_RootOrder: 0
@@ -114,7 +115,24 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
+--- !u!95 &95854269306493646
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1728868492173182}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9c64886a7c41ee248baefe874f8201af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114491370235912904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ProjectileTransfom: {fileID: 4499819864720550}
+  ProjectileRenderer: {fileID: 212602888830859930}
   BulletPrefab: {fileID: 1866382689972808, guid: 6133c5b9f964de545b3df4444b6b6001,
     type: 2}
   Speed: 20
@@ -164,7 +183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f4d38cea261aaa34abe89cde0fcc1d63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96b15eeaf28ffff4e954298ef817d97d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
