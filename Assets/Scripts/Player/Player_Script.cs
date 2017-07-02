@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ enum player_input
     horizontal = 0,
     vertical = 1,
     flap = 2,
-    dive = 3
+    dive = 3,
+    dash = 4
 }
 
 
@@ -16,6 +18,8 @@ public class Player_Script : MovingEntity {
 
     [SerializeField]
     Vector2 velocity_max;
+
+   
 
     [SerializeField]
     Vector2 velocity_increment;
@@ -31,6 +35,24 @@ public class Player_Script : MovingEntity {
 
     [SerializeField]
     BoxCollider2D bulletCollider;
+
+    #region dash
+    [SerializeField]
+    float dashDuration;
+
+    [SerializeField]
+    float dashingVelocity;
+
+    float dashTimeLeft;
+
+    [SerializeField]
+    int dashPoints;
+
+    [SerializeField]
+    public float dashCooldownTime;
+
+    public float[] dashCooldowns;
+    #endregion dash
 
 
     Animator anim;
@@ -52,7 +74,7 @@ public class Player_Script : MovingEntity {
 
     public bool dying;
 
-    string[] inputs = { "Horizontal", "Vertical", "Flap", "Dive"};
+    string[] inputs = { "Horizontal", "Vertical", "Flap", "Dive", "Dash"};
 
     // Use this for initialization
     void Start () {
@@ -64,6 +86,11 @@ public class Player_Script : MovingEntity {
         if (tag.Contains("2"))
             for (int i = 0; i < inputs.Length; ++i)
                 inputs[i] = inputs[i] + "_P2";
+
+        dashCooldowns = new float[dashPoints];
+
+        FindObjectOfType<DashPoints>().Init();
+
 	}
 
     public void TakePortal(int toWorld)
@@ -99,13 +126,16 @@ public class Player_Script : MovingEntity {
 
 
         diving = Input.GetButton(inputs[(int)player_input.dive]);
+
+        dashUpdate();
+
         bool walking = isGrounded();
 
         if (Input.GetButtonDown(inputs[(int)player_input.flap]))
         {
             last_flap = Time.time;
             rb.velocity += new Vector2(velocity_increment.x * Input.GetAxis(inputs[(int)player_input.horizontal]), velocity_increment.y);
-
+           
             if (Mathf.Abs(Input.GetAxis(inputs[(int)player_input.horizontal])) > 0.1f)
                 facingLeft = Input.GetAxis(inputs[(int)player_input.horizontal]) < 0;
         }
@@ -125,7 +155,14 @@ public class Player_Script : MovingEntity {
         anim.speed = (currentState.IsName("Diving_Ball") && walking && Mathf.Abs(rb.velocity.x) < 0.1) ? 0 : 1;
 
 
-        rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -velocity_max.x, velocity_max.x), Mathf.Clamp(rb.velocity.y, -velocity_max.y, velocity_max.y));
+        if (dashTimeLeft > 0)
+        {
+            rb.velocity = new Vector2(dashingVelocity * getHorizontalDirection(), 0);
+        }
+        else {
+            rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -velocity_max.x, velocity_max.x), Mathf.Clamp(rb.velocity.y, -velocity_max.y, velocity_max.y));
+        }
+
 
         sprite.flipX = facingLeft;
         anim.SetFloat("velocity_y", rb.velocity.y);
@@ -134,6 +171,46 @@ public class Player_Script : MovingEntity {
         anim.SetBool("Walking", walking);
 
 
+    }
+
+    public void dashUpdate()
+    {
+        if (!diving && Input.GetButtonDown(inputs[(int)player_input.dash]))
+        {
+            tryDash();
+        }
+
+        if (dashTimeLeft > 0)
+        {
+            dashTimeLeft = Mathf.Max(0, dashTimeLeft - Time.deltaTime);
+        }
+        for(int i = 0; i < dashCooldowns.Length; ++i)
+        {
+            if (dashCooldowns[i] > 0)
+                dashCooldowns[i] = Mathf.Max(0f, dashCooldowns[i] - Time.deltaTime);
+        }
+    }
+
+    public bool tryDash()
+    {
+        for (int i = 0; i < dashCooldowns.Length; ++i)
+        {
+            if (dashCooldowns[i] <= 0)
+            {
+                dashCooldowns[i] = dashCooldownTime;
+                dashTimeLeft = dashDuration;
+                Array.Sort(dashCooldowns);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    int getHorizontalDirection()
+    {
+        if (facingLeft)
+            return -1;
+        return 1;
     }
 
     bool isGrounded()
@@ -180,7 +257,6 @@ public class Player_Script : MovingEntity {
 
     override public void divedOnto(Collision2D collision)
     {
-        Debug.Log(tag);
         GetShotSon(collision.collider);
     }
 

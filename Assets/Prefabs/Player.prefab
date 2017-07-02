@@ -156,8 +156,9 @@ MonoBehaviour:
   dive_gravity: 25
   walkingSpeed: 8
   walking_ldrag: 10
-  feetCollider: {fileID: 0}
   bulletCollider: {fileID: 61432332235958556}
+  dash_duration: 0
+  dashingVelocity: 1500
   rb: {fileID: 0}
   diving: 0
   portalToWorld: 0
