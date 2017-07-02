@@ -2,7 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Script : MonoBehaviour {
+enum player_input
+{
+    horizontal = 0,
+    vertical = 1,
+    flap = 2,
+    dive = 3
+}
+
+
+
+public class Player_Script : MovingEntity {
 
     [SerializeField]
     Vector2 velocity_max;
@@ -19,8 +29,6 @@ public class Player_Script : MonoBehaviour {
     [SerializeField]
     float walking_ldrag;
 
-    [SerializeField]
-    BoxCollider2D feetCollider;
     [SerializeField]
     BoxCollider2D bulletCollider;
 
@@ -44,6 +52,8 @@ public class Player_Script : MonoBehaviour {
 
     public bool dying;
 
+    string[] inputs = { "Horizontal", "Vertical", "Flap", "Dive"};
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -51,6 +61,9 @@ public class Player_Script : MonoBehaviour {
         default_gravity = rb.gravityScale;
         default_ldrag = rb.drag;
         sprite = GetComponent<SpriteRenderer>();
+        if (tag.Contains("2"))
+            for (int i = 0; i < inputs.Length; ++i)
+                inputs[i] = inputs[i] + "_P2";
 	}
 
     public void TakePortal(int toWorld)
@@ -84,21 +97,23 @@ public class Player_Script : MonoBehaviour {
             return;
         }
 
-        diving = Input.GetButton("Dive");
+
+        diving = Input.GetButton(inputs[(int)player_input.dive]);
         bool walking = isGrounded();
 
-        if (Input.GetButtonDown("Flap"))
+        if (Input.GetButtonDown(inputs[(int)player_input.flap]))
         {
             last_flap = Time.time;
-            rb.velocity += new Vector2(velocity_increment.x * Input.GetAxis("Horizontal"), velocity_increment.y);
-            if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
-                facingLeft = Input.GetAxis("Horizontal") < 0;
+            rb.velocity += new Vector2(velocity_increment.x * Input.GetAxis(inputs[(int)player_input.horizontal]), velocity_increment.y);
+
+            if (Mathf.Abs(Input.GetAxis(inputs[(int)player_input.horizontal])) > 0.1f)
+                facingLeft = Input.GetAxis(inputs[(int)player_input.horizontal]) < 0;
         }
         else if(walking)
         {
-            rb.velocity += Vector2.right * Input.GetAxis("Horizontal") * walkingSpeed;
-            if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f)
-                facingLeft = Input.GetAxis("Horizontal") < 0;
+            rb.velocity += Vector2.right * Input.GetAxis(inputs[(int)player_input.horizontal]) * walkingSpeed;
+            if (Mathf.Abs(Input.GetAxis(inputs[(int)player_input.horizontal])) > 0.1f)
+                facingLeft = Input.GetAxis(inputs[(int)player_input.horizontal]) < 0;
         }
 
         rb.gravityScale = diving ? dive_gravity : default_gravity;
@@ -141,16 +156,32 @@ public class Player_Script : MonoBehaviour {
         rb.gravityScale = dive_gravity;
         //rb.AddForce();
         GetComponent<BoxCollider2D>().enabled = false;
-        feetCollider.enabled = false;
         bulletCollider.enabled = false;
         anim.SetTrigger("Dying");
         dyingTime = 2;
-
-
     }
 
     GameController getGameController()
     {
         return GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (diving) {
+            GameObject other = collision.gameObject;
+            MovingEntity entity = other.GetComponent<MovingEntity>();
+            if (entity)
+            {
+                entity.divedOnto(collision);
+            }
+        }
+    }
+
+    override public void divedOnto(Collision2D collision)
+    {
+        Debug.Log(tag);
+        GetShotSon(collision.collider);
+    }
+
 }

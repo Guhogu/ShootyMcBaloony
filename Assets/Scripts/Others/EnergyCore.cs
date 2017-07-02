@@ -12,7 +12,7 @@ public class EnergyCore : MonoBehaviour {
             if (value)
             {
                 sprite.sprite = sprite_broken;
-                shield.gameObject.SetActive(false);
+                DisableShield();
             }
         }
     }
@@ -48,8 +48,15 @@ public class EnergyCore : MonoBehaviour {
 	
     public void EnablePortal()
     {
+        GameController.destroyedShield[scrollingIndex] = true;
         portal.SetActive(true);
         portal.GetComponent<PortalScript>().toWorld = scrollingIndex;
+    }
+
+    public void DisableShield()
+    {
+        shield.gameObject.SetActive(false);
+        EnablePortal();
     }
 
     // Update is called once per frame

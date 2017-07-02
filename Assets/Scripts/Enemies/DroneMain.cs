@@ -74,11 +74,7 @@ public class DroneMain : HostileParent
         PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.CompareTag("Player") && PlayerTransform.GetComponent<Player_Script>().diving)
-            KillDrone();
+    override public void divedOnto(Collision2D collision) {
+        KillDrone();
     }
-
 }

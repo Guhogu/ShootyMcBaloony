@@ -19,9 +19,11 @@ public class GameController : MonoBehaviour {
     static string baseScene = "MainScene";
 
 
+
     [SerializeField]
     static int currentScrollingLevel;
 
+    public static bool canMove = true;
     public static bool hostileCanMove = true;
 
     [SerializeField]
@@ -36,6 +38,9 @@ public class GameController : MonoBehaviour {
     public bool isEndless;
 
     public static bool paused = false;
+
+    [SerializeField]
+    public static bool multiplayer = false;
 
     void OnDisable()
     {
@@ -56,7 +61,6 @@ public class GameController : MonoBehaviour {
         DontDestroyOnLoad(this);
         currentLives = maxLives;
         getHealthScript().UpdateLives(currentLives);
-
     }
 
     public void StopAllHostile()
@@ -86,11 +90,16 @@ public class GameController : MonoBehaviour {
     {
         hostileCanMove = true;
         healthScript = null;
-        getHealthScript().UpdateLives(currentLives);
 
         foreach (EnergyCore core in FindObjectsOfType<EnergyCore>())
+        { 
             if (finishedScrollingLevel[core.scrollingIndex])
                 core.broken = true;
+            if (destroyedShield[core.scrollingIndex])
+                core.DisableShield();
+        }
+        getHealthScript().UpdateLives(currentLives);
+
     }
 
     public void Portal(int world)

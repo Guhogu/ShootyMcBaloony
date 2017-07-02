@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HostileParent : MonoBehaviour {
+public abstract class HostileParent : MovingEntity {
 
 	// Use this for initialization
 	void Start () {
@@ -14,9 +14,9 @@ public class HostileParent : MonoBehaviour {
 		
 	}
 
-    protected bool canMove()
+    protected new bool canMove()
     {
-        bool can = GameController.hostileCanMove && !GameController.paused ;
+        bool can = GameController.hostileCanMove && base.canMove();
         Animator anim = GetComponent<Animator>();
         if (anim)
             anim.speed = can ? 1 : 0;
