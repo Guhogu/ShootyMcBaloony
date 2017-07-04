@@ -106,9 +106,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0.5, y: 3}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 5, y: 14}
+  m_EdgeRadius: 0
 --- !u!61 &61578214515587092
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -120,9 +131,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: -1.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 64, y: 32}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 7, y: 20}
+  m_EdgeRadius: 0
 --- !u!95 &95926063365532016
 Animator:
   serializedVersion: 3
@@ -157,8 +179,11 @@ MonoBehaviour:
   walkingSpeed: 8
   walking_ldrag: 10
   bulletCollider: {fileID: 61432332235958556}
-  dash_duration: 0
-  dashingVelocity: 1500
+  dashDuration: 0
+  dashingVelocity: 200
+  dashPoints: 0
+  dashCooldownTime: 2
+  dashCooldowns: []
   rb: {fileID: 0}
   diving: 0
   portalToWorld: 0
@@ -205,8 +230,14 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300006, guid: b29faa0a928d2b544aee9c9d65cdf313, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
