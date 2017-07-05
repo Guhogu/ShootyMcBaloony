@@ -16,16 +16,12 @@ enum player_input
 
 public class Player_Script : MovingEntity {
 
+    [Header("Movement")]
     [SerializeField]
     Vector2 velocity_max;
 
-   
-
     [SerializeField]
     Vector2 velocity_increment;
-
-    [SerializeField]
-    float dive_gravity;
 
     [SerializeField]
     float walkingSpeed;
@@ -34,8 +30,12 @@ public class Player_Script : MovingEntity {
     float walking_ldrag;
 
     [SerializeField]
-    BoxCollider2D bulletCollider;
+    float dive_gravity;
 
+   
+
+    [Space(20)]
+    [Header("Dash")]
     #region dash
     [SerializeField]
     float dashDuration;
@@ -46,19 +46,40 @@ public class Player_Script : MovingEntity {
     float dashTimeLeft;
 
     [SerializeField]
-    int dashPoints;
+    public int dashPointsMax;
+
+    [NonSerialized]
+    public int dashPoints;
 
     [SerializeField]
     public float dashCooldownTime;
 
-    public float[] dashCooldowns;
+    [NonSerialized]
+    public float dashCurrentCooldown;
+
+    Vector2 predashVelocity;
+
+    bool dashing {
+        get { return dashTimeLeft > 0;}
+    }
+
+    Vector2 dashDirection;
+
     #endregion dash
 
+    [Space(20)]
+    [Header("References")]
+
+    [SerializeField]
+    BoxCollider2D bulletCollider;
+
+    [NonSerialized]
+    public Rigidbody2D rb;
 
     Animator anim;
-    public Rigidbody2D rb;
+    
     SpriteRenderer sprite;
-
+    
     bool facingLeft;
     float last_flap;
     bool dead = false;
@@ -66,12 +87,15 @@ public class Player_Script : MovingEntity {
     float default_ldrag;
     float dyingTime;
 
+    [NonSerialized]
     public bool diving;
 
+    [NonSerialized]
     public int portalToWorld;
 
     bool takingPortal;
 
+    [NonSerialized]
     public bool dying;
 
     string[] inputs = { "Horizontal", "Vertical", "Flap", "Dive", "Dash"};
@@ -87,8 +111,7 @@ public class Player_Script : MovingEntity {
             for (int i = 0; i < inputs.Length; ++i)
                 inputs[i] = inputs[i] + "_P2";
 
-        dashCooldowns = new float[dashPoints];
-
+        dashPoints = dashPointsMax;
         FindObjectOfType<DashPoints>().Init();
 
 	}
@@ -127,7 +150,6 @@ public class Player_Script : MovingEntity {
 
         diving = Input.GetButton(inputs[(int)player_input.dive]);
 
-        dashUpdate();
 
         bool walking = isGrounded();
 
@@ -154,12 +176,10 @@ public class Player_Script : MovingEntity {
 
         anim.speed = (currentState.IsName("Diving_Ball") && walking && Mathf.Abs(rb.velocity.x) < 0.1) ? 0 : 1;
 
+        dashUpdate();
 
-        if (dashTimeLeft > 0)
+        if (!dashing)
         {
-            rb.velocity = new Vector2(dashingVelocity * getHorizontalDirection(), 0);
-        }
-        else {
             rb.velocity = new Vector2(Mathf.Clamp(rb.velocity.x, -velocity_max.x, velocity_max.x), Mathf.Clamp(rb.velocity.y, -velocity_max.y, velocity_max.y));
         }
 
@@ -175,33 +195,63 @@ public class Player_Script : MovingEntity {
 
     public void dashUpdate()
     {
-        if (!diving && Input.GetButtonDown(inputs[(int)player_input.dash]))
+
+        if (!diving && !dashing && Input.GetButtonDown(inputs[(int)player_input.dash]))
         {
             tryDash();
         }
 
-        if (dashTimeLeft > 0)
+        if (dashCurrentCooldown > 0)
         {
-            dashTimeLeft = Mathf.Max(0, dashTimeLeft - Time.deltaTime);
+            dashCurrentCooldown = Mathf.Max(0, dashCurrentCooldown - Time.deltaTime);
+            if (dashCurrentCooldown <= 0)
+            {
+                if (dashPoints == 0)
+                {
+                    dashPoints = dashPointsMax;
+                }
+                else
+                {
+                    dashPoints = Math.Min(dashPoints + 1, dashPointsMax);
+                    if (dashPoints < dashPointsMax)
+                        dashCurrentCooldown = dashCooldownTime;
+                }
+            }
         }
-        for(int i = 0; i < dashCooldowns.Length; ++i)
+
+        if (dashing)
         {
-            if (dashCooldowns[i] > 0)
-                dashCooldowns[i] = Mathf.Max(0f, dashCooldowns[i] - Time.deltaTime);
+
+            dashTimeLeft = Mathf.Max(0, dashTimeLeft - Time.deltaTime);
+
+            if (!dashing)
+            {
+                rb.velocity = Vector2.zero;
+            }
+            else
+            {
+                rb.velocity = dashingVelocity * dashDirection;    
+            }
         }
     }
 
     public bool tryDash()
     {
-        for (int i = 0; i < dashCooldowns.Length; ++i)
+        if (dashPoints > 0)
         {
-            if (dashCooldowns[i] <= 0)
-            {
-                dashCooldowns[i] = dashCooldownTime;
-                dashTimeLeft = dashDuration;
-                Array.Sort(dashCooldowns);
-                return true;
-            }
+            --dashPoints;
+            if (dashPoints != 0)
+                dashCurrentCooldown = dashCooldownTime;
+            else
+                dashCurrentCooldown = 3 * dashCooldownTime;
+            dashTimeLeft = dashDuration;
+            predashVelocity = rb.velocity;
+
+            dashDirection = new Vector2(Input.GetAxisRaw(inputs[(int)player_input.horizontal]),
+                                        Input.GetAxisRaw(inputs[(int)player_input.vertical]));
+            dashDirection.Normalize();
+
+            return true;
         }
         return false;
     }

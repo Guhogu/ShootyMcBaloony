@@ -24,19 +24,16 @@ public class DashPoints : MonoBehaviour {
     public void Init()
     {
         player = FindObjectOfType<Player_Script>();
-        points = new Image[player.dashCooldowns.Length];
-        Debug.Log(player.dashCooldowns);
-        for (int i = 0; i < player.dashCooldowns.Length; ++i)
+        points = new Image[player.dashPointsMax];
+        for (int i = 0; i < player.dashPointsMax; ++i)
         {
-            Debug.Log(-(i * (length_sprite + spacing) + spacing));
             Transform point = Instantiate(pointPrefab);
-            point.parent = transform;
+            point.SetParent(transform);
             point.localPosition = new Vector3(-(i * (length_sprite + spacing) + spacing), spacing, 0);
             point.gameObject.SetActive(true);
             points[i] = point.GetComponent<Image>();
 
         }
-        Debug.Log(points);
     }
 	
 	// Update is called once per frame
@@ -44,11 +41,14 @@ public class DashPoints : MonoBehaviour {
         for (int i = 0; i < points.Length; ++i)
         {
             float alpha;
-            if (player.dashCooldowns[i] <= 0)
+            if (i < player.dashPoints)
                 points[i].color = new Color(1, 1, 1, 1);
             else
             {
-                alpha = Mathf.Lerp(0.7f, 0.1f, player.dashCooldowns[i] / player.dashCooldownTime);
+                if (i == player.dashPoints || player.dashPoints == 0)
+                    alpha = Mathf.Lerp(0.7f, 0.1f, player.dashCurrentCooldown / player.dashCooldownTime);
+                else
+                    alpha = 0.1f;
                 points[i].color = new Color(1, 0, 1, alpha);
             }
         }
